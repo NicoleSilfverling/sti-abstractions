@@ -9,5 +9,8 @@
         <module name="sti-abstractions" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="sti-abstractions-domain" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
