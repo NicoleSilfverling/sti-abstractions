@@ -6,11 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="sti-abstractions" />
+        <module name="sti-abstractions-service" />
+        <module name="sti-abstractions-domain" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="sti-abstractions-domain" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
