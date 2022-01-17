@@ -1,13 +1,10 @@
 package sti.abstractions.domain;
 
-public class Animal {
+public abstract class Animal {
 
     protected String name;
     protected boolean isHungry;
     protected double weight;
 
-    public boolean eat(Object food){
-
-        return false;
-    }
+    //public abstract boolean eat(Object food);
 }
