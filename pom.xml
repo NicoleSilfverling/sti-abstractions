@@ -35,7 +35,7 @@
 
     <modules>
         <module>sti-abstractions-domain</module>
-        <module>sti-abstractions-service</module>
+        <module>sti-abstractions-service-impl</module>
     </modules>
 
     <dependencyManagement>
