@@ -1,22 +1,19 @@
 package sti.abstractions.domain;
 
+import java.util.Random;
+
 public class Owl extends Animal {
 
     private int wingSpan;
 
-
-    public Owl(String name, int wingSpan, boolean isHungry, double weight) {
-        this.name = name;
+    //constructor
+    public Owl(int wingSpan, boolean hungry, int weight, String name) {
+        super(hungry, weight, name);
         this.wingSpan = wingSpan;
-        this.isHungry = isHungry;
-        this.weight = weight;
     }
 
     private static final int DEFAULT_WINGSPAN = 90;
-
-    public Owl(int wingSpan){
-        setWingSpan(wingSpan);
-    }
+    private static final int DEFAULT_WEIGHT = 3000;
 
     public int getWingSpan() {
         return wingSpan;
@@ -30,14 +27,45 @@ public class Owl extends Animal {
         }
     }
 
-    public void eat(boolean isHungry){
+    public boolean isHungry() {
+        return hungry;
+    }
 
-        if (isHungry){
+    public void setHungry(boolean hungry) {
+        this.hungry = hungry;
+    }
 
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        if (weight >= 2000 && weight <= 4000) {
+            this.weight = weight;
+        }else {
+            this.weight = DEFAULT_WEIGHT;
         }
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+    public boolean eat(PineTree pineTree){
+        Random random = new Random();
+        int squirrelSpeed = random.nextInt(11);
+        int owlSpeed = random.nextInt(11);
+        return hungry && owlSpeed > squirrelSpeed;
+    }
+
+    @Override
+    public boolean eat(Object food) {
+        return food instanceof PineTree.PineCone;
+    }
 
 }
-
-

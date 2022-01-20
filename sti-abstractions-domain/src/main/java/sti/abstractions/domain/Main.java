@@ -1,25 +1,43 @@
 package sti.abstractions.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
+
     public static void main(String[] args) {
-        Squirrel s1 = new Squirrel("Bob",true, 0.6);
-        s1.setNumOfConesInNest(4);
 
-        Squirrel s2 = new Squirrel("Bobby", true, 0.5);
-        s2.setNumOfConesInNest(0);
+        List<Squirrel> squirrels = new ArrayList<>();
 
-        Owl o1 = new Owl("Ugglan", 50, false, 3);
+        squirrels.add(new Squirrel(300, 5, 2, "Bob", true));
+        squirrels.add(new Squirrel(400, 3, 3, "Bobby", true));
 
-        PineTree tree = new PineTree(15, 10);
-        tree.addSquirrels(s1);
-        tree.addSquirrels(s2);
-        tree.addOwls(o1);
+        Owl owl = new Owl(85, true, 3500,"Magnus");
+
+        PineTree pineTree = new PineTree(12, squirrels, owl, 650);
 
 
 
-//        System.out.println(s1.eat(s1.isHungry(), s1.getNumOfConesInNest()));
-//        System.out.println(s2.eat(s2.isHungry(), s2.getNumOfConesInNest()));
+        System.out.println(owl.eat(pineTree) ? "Nom nom nom, " + owl.getName() + " the owl stole the squirrels pine cone" : "The squirrel was too fast, no food for " + owl.getName());
 
-        tree.printSquirellList();
+
+        System.out.println(pineTree.fall(40, 700, 5) ? "The tree fell" : "The tree survived");
+
+
+
+        if (squirrels.get(0).eat(pineTree)){
+            System.out.println(squirrels.get(0).getName() + " the squirrel has eaten");
+        }else {
+            System.out.println("No food for " + squirrels.get(0).getName());
+        }
+
+
+        boolean pineTreeFell = pineTree.fall(40, 700, 5);
+        System.out.println("Did the tree fall? " + pineTreeFell);
+
+
+
+
+
     }
 }

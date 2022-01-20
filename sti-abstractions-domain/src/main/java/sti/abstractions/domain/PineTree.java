@@ -1,40 +1,67 @@
 package sti.abstractions.domain;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class PineTree {
+
     private int numOfCones;
-    private int height;
-    private ArrayList<Squirrel> squirrels = new ArrayList<>();
-    private ArrayList<Owl> owls = new ArrayList<>();
 
-    public PineTree(int numOfCones, int height) {
+    private List<Squirrel> squirrels;
+
+    private Owl owl;
+
+    private int age;
+
+    //constructor
+    public PineTree(int numOfCones, List<Squirrel> squirrels, Owl owl, int age) {
         this.numOfCones = numOfCones;
-        this.height = height;
+        this.squirrels = squirrels;
+        this.owl = owl;
+        this.age = age;
     }
 
-    public ArrayList<Owl> getOwls() {
-        return owls;
-    }
-    public void addOwls(Owl owl){
-        owls.add(owl);
+    public int getNumOfCones() {
+        return numOfCones;
     }
 
+    public void setNumOfCones(int numOfCones) {
+        this.numOfCones = numOfCones;
+    }
 
-    public ArrayList<Squirrel> getSquirrels() {
+    public List<Squirrel> getSquirrels() {
         return squirrels;
     }
-    public void addSquirrels(Squirrel squirrel){
-        squirrels.add(squirrel);
+
+    public void setSquirrels(List<Squirrel> squirrels) {
+        this.squirrels = squirrels;
     }
 
-    public void printSquirellList(){
-        for (Squirrel squirrel: squirrels) {
-            System.out.println("Name: " + squirrel.getName() + "\nWeight: " + squirrel.getWeight() +
-                    "\nCones in nest: " + squirrel.getNumOfConesInNest() + "\nIs hungry: " + squirrel.isHungry());
+    public Owl getOwl() {
+        return owl;
+    }
 
+    public void setOwl(Owl owl) {
+        this.owl = owl;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public boolean fall(int height, int age, int earthquake){
+        if (age > 600 && height > 30 && earthquake > 3){
+            Random random = new Random();
+            return random.nextInt(6) >= 4;
         }
+        return false;
+    }
+
+    static class PineCone{
+
     }
 }
-
-

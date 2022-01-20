@@ -1,22 +1,33 @@
 package sti.abstractions.domain;
 
-public class Squirrel extends Animal{
+public class Squirrel extends Animal {
 
     private int numOfConesInNest;
 
-    public Squirrel(String name, boolean isHungry, double weight) {
-        this.name = name;
-        this.isHungry = isHungry;
-        this.weight = weight;
+    private int age;
+
+
+    //constructor
+    public Squirrel(int weight, int numOfConesInNest, int age, String name, boolean hungry) {
+        super(hungry, weight, name);
+        this.numOfConesInNest = numOfConesInNest;
+        this.age = age;
     }
 
 
-    public String getName() {
-        return name;
+    private static final int DEFAULT_WEIGHT = 300;
+
+
+    public int getWeight() {
+        return weight;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setWeight(int weight) {
+        if (weight >= 200 && weight <= 450) {
+            this.weight = weight;
+        }else {
+            this.weight = DEFAULT_WEIGHT;
+        }
     }
 
     public int getNumOfConesInNest() {
@@ -27,35 +38,42 @@ public class Squirrel extends Animal{
         this.numOfConesInNest = numOfConesInNest;
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public boolean isHungry() {
-        return isHungry;
+        return hungry;
     }
 
     public void setHungry(boolean hungry) {
-        isHungry = hungry;
+        this.hungry = hungry;
     }
 
 
-    public double getWeight() {
-        return weight;
-    }
-
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
-
-
-    public String eat(boolean isHungry, int numOfConesInNest){
-        if (isHungry == true && numOfConesInNest > 0){
-            setHungry(false);
-            setNumOfConesInNest(getNumOfConesInNest()-1);
-            setWeight(getWeight()+0.03);
+    public boolean eat(PineTree pineTree){
+        if(hungry && (numOfConesInNest > 0 || pineTree.getNumOfCones() > 0)){
+            setWeight(getWeight() + 10);
+            return true;
         }
-        return  "Name: " + getName() + "\nNr of cones in nest: " + getNumOfConesInNest() + "\nWeight: " + getWeight();
+        return false;
     }
 
-
+    @Override
+    public boolean eat(Object food) {
+        return food instanceof PineTree.PineCone;
+    }
 
 }

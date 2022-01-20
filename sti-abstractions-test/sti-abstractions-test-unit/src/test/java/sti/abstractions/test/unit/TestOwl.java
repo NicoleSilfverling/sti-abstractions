@@ -7,8 +7,12 @@ import sti.abstractions.domain.Owl;
 public class TestOwl    {
 
     @Test
-    public void owlConstructorTest(){
-        Owl owl = new Owl("Mr Owl", 90, true, 3.5);
+    public void owlConstructorTes(){
+        Owl owl = new Owl(90,true, 3000, "Name");
         Assert.assertEquals(90, owl.getWingSpan());
+
+
+
+
     }
 }

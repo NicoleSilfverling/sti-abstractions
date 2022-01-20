@@ -2,9 +2,19 @@ package sti.abstractions.domain;
 
 public abstract class Animal {
 
-    protected String name;
-    protected boolean isHungry;
-    protected double weight;
+    protected boolean hungry;
 
-    //public abstract boolean eat(Object food);
+    protected int weight;
+
+    protected String name;
+
+    public Animal(){}
+
+    public Animal(boolean hungry, int weight, String name) {
+        this.hungry = hungry;
+        this.weight = weight;
+        this.name = name;
+    }
+
+    public abstract boolean eat(Object food);
 }

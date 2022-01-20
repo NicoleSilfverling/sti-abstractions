@@ -1,8 +1,5 @@
 package sti.abstractions.service;
 
-import sti.abstractions.domain.Owl;
-import sti.abstractions.domain.Squirrel;
-
 public interface ForestService {
 
     public Owl createOwl(int wingSpan);
