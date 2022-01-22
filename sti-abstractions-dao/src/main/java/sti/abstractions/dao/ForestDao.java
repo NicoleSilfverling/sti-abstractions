@@ -4,6 +4,8 @@ import sti.abstractions.domain.Owl;
 import sti.abstractions.domain.PineTree;
 import sti.abstractions.domain.Squirrel;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 public interface ForestDao {
@@ -12,4 +14,6 @@ public interface ForestDao {
     Squirrel createSquirrel(String name, boolean isHungry, double weight);
 
     PineTree createPineTree(int numOfCones, List<Squirrel> squirrels, Owl owl, int age);
+
+    Connection getConnection() throws SQLException;
 }

@@ -6,15 +6,19 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import sti.abstractions.dao.ForestDao;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+
 public class TestDao {
 
     ApplicationContext context = new ClassPathXmlApplicationContext("classpath:sti-abstractions-dao.xml");
+    ForestDao forestDao = (ForestDao) context.getBean("forestDao");
 
     @Test
-    public void testGetBean(){
+    public void testGetConnection() throws SQLException {
 
-        ForestDao forestDao = (ForestDao) context.getBean("forestDao");
-        Assert.assertNotNull(forestDao);
+        Connection connection = forestDao.getConnection();
+        Assert.assertNotNull(connection);
     }
 
 }
