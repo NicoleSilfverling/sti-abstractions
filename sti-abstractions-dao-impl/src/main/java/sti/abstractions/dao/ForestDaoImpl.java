@@ -4,16 +4,15 @@ import sti.abstractions.domain.Owl;
 import sti.abstractions.domain.PineTree;
 import sti.abstractions.domain.Squirrel;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.List;
 
 public class ForestDaoImpl implements ForestDao{
 
-    Connection connection = null;
-    Statement statement = null;
+    Connection conn = null;
+    PreparedStatement preparedStatement = null;
+    ResultSet rs = null;
+    int result = 0;
 
     @Override
     public Connection getConnection() throws SQLException{
@@ -26,8 +25,21 @@ public class ForestDaoImpl implements ForestDao{
     }
 
     @Override
-    public Squirrel createSquirrel(String name, boolean isHungry, double weight) {
-        return null;
+    public Squirrel createSquirrel(String name, int weight) {
+        try {
+            conn = getConnection();
+            preparedStatement =conn.prepareStatement("INSERT INTO squirrel (name, weight) VALUES(?, ?)");
+
+            preparedStatement.setString(1, name);
+            preparedStatement.setInt(2, weight);
+
+
+            result = preparedStatement.executeUpdate();
+        }catch (SQLException e){
+            System.out.println(e);
+        }
+
+        return new Squirrel(name, weight);
     }
 
     @Override

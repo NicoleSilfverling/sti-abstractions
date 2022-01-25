@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import sti.abstractions.dao.ForestDao;
+import sti.abstractions.domain.Squirrel;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -19,6 +20,12 @@ public class TestDao {
 
         Connection connection = forestDao.getConnection();
         Assert.assertNotNull(connection);
+    }
+
+    @Test
+    public void testCreateSquirrel(){
+        Squirrel bobby = forestDao.createSquirrel("Bobby", 300);
+        Assert.assertNotNull(bobby);
     }
 
 }

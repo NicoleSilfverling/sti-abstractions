@@ -11,7 +11,7 @@ import java.util.List;
 public interface ForestDao {
     Owl createOwl(int wingSpan, boolean hungry, int weight, String name);
 
-    Squirrel createSquirrel(String name, boolean isHungry, double weight);
+    Squirrel createSquirrel(String name, int weight);
 
     PineTree createPineTree(int numOfCones, List<Squirrel> squirrels, Owl owl, int age);
 

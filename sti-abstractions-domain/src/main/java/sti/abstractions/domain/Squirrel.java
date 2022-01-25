@@ -14,8 +14,15 @@ public class Squirrel extends Animal {
         this.age = age;
     }
 
+    public Squirrel(String name, int weight) {
+        super(name, weight);
+
+    }
+
 
     private static final int DEFAULT_WEIGHT = 300;
+
+
 
 
     public int getWeight() {

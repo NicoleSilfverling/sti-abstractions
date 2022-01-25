@@ -15,6 +15,10 @@ public abstract class Animal {
         this.weight = weight;
         this.name = name;
     }
+    public Animal(String name, int weight) {
+        this.name = name;
+        this.weight = weight;
+    }
 
     public abstract boolean eat(Object food);
 }
